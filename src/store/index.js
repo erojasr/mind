@@ -10,13 +10,17 @@ export const store = new Vuex.Store({
               imageUrl: 'https://socialmediaweek.org/newyork/files/2017/01/nyc-2.jpg',
               id: 'asdfghjk',
               title: 'Meetup on new york',
-              date: '2017-07-17'
+              date: '2017-07-17',
+              location: 'New York',
+              description: 'New York'
           },
           {
               imageUrl: 'https://xn--laclassefranaise-npb.es/wp-content/uploads/2014/02/Vive-sin-trabajar-en-Paris.jpeg',
               id: 'qwertyu',
               title: 'Meetup in Paris',
-              date: '2017-07-19'
+              date: '2017-07-19',
+              location:'Paris',
+              description: 'Paris'
           }
         ]
     },
