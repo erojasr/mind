@@ -29,7 +29,7 @@
               flat
               v-for="item in menuItems"
               :key="item.title"
-              :to="item.link"o>
+              :to="item.link">
               <v-icon left dark>{{ item.icon }}</v-icon>
               {{ item.title }}
             </v-btn>
@@ -52,15 +52,28 @@
   export default {
     data () {
       return {
-        sideNav: false,
-        menuItems: [
-          {icon: 'supervisor_account', title: 'View Meetups', link: '/meetups'},
-          {icon: 'room', title: 'Organize Meetups', link: '/meetup/new'},
-          {icon: 'person', title: 'Profile', link: '/profile'},
-          {icon: 'face', title: 'Sign up', link: '/signup'},
-          {icon: 'lock_open', title: 'Sign in', link: '/signin'}
-        ]
+        sideNav: false
       }
+    },
+    computed: {
+        menuItems () {
+            let menuItems = [
+              {icon: 'face', title: 'Sign up', link: '/signup'},
+              {icon: 'lock_open', title: 'Sign in', link: '/signin'}
+            ]
+            if(this.userIsAuthenticated){
+                menuItems = [
+                  {icon: 'supervisor_account', title: 'View Meetups', link: '/meetups'},
+                  {icon: 'room', title: 'Organize Meetups', link: '/meetup/new'},
+                  {icon: 'person', title: 'Profile', link: '/profile'}
+                ]
+            }
+
+            return menuItems
+        },
+        userIsAuthenticated () {
+            return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+        }
     }
   }
 </script>
