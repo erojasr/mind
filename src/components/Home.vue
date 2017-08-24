@@ -9,8 +9,14 @@
 			</v-flex>
 		</v-layout>
 
+		<v-layout>
+			<v-flex xs12 class="text-xs-center">
+				<v-progress-circular indeterminate class="primary--text" v-if="loading"></v-progress-circular>
+			</v-flex>
+		</v-layout>
+
 		<!-- Carousel -->
-		<v-layout row wrap class="mt-2">
+		<v-layout row wrap class="mt-2" v-if="!loading">
 			<v-flex xs12>
 				<v-carousel>
 				    <v-carousel-item
@@ -42,6 +48,9 @@ export default {
   computed: {
 	meetups () {
 		return this.$store.getters.loadedMeetups
+	},
+	loading () {
+		return this.$store.getters.loading
 	}
   },
   methods: {
